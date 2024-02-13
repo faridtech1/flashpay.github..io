@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech</title>
+    <style>
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+h1{
+    color: #333;
+}
+.container{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.text{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button{
+    width: 350px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+button:hover{
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    
+    <h1><marquee > Welcome To Text-to-Speech</marquee></h1>
+    <div class="container">
+    <textarea id="textInput" placeholder="Enter text to be spoken" class="text"></textarea>
+    
+    <button id="speakButton">Speak</button>
+</div> 
+    <script>
+        const textInput = document.getElementById('textInput');
+        const speakButton = document.getElementById('speakButton');
+        
+        // Function to speak the entered text
+        function speakText() {
+            const text = textInput.value;
+            
+            if (text.trim() !== '') {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        
+    
+        speakButton.addEventListener('click', speakText);
+    </script>
+</body>
+</html>
